@@ -68,10 +68,10 @@ def create_ui():
                        value="", max_chars=100)
 
     age = st.number_input(f'Write your age', format='%i' ,
-                       value="", max_chars=100)
+                       value=None)
 
     gender = st.text_area(f'Write your gender', height=50,
-                       value=None, max_chars=100)
+                       value="", max_chars=100)
     occupation = st.text_area(f'What is your employment status?', height=50,
                        value="", max_chars=1000)
     smoking_history = st.selectbox('Are you a smoker or a non-smoker?',('Smoker', 'Non - Smoker'))
