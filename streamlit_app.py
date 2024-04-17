@@ -67,8 +67,8 @@ def create_ui():
     name = st.text_area(f'Write your name', height=50,
                        value="", max_chars=100)
 
-    age = st.number_input(f'Write your age',
-                       value=None)
+    age = st.text_area(f'Write your age',height=50,
+                       value="", max_chars=100)
 
     gender = st.text_area(f'Write your gender', height=50,
                        value="", max_chars=100)
