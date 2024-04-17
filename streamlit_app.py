@@ -82,11 +82,11 @@ def create_ui():
         if len(name.strip()) == 0:
             st.warning('Input needs to have at least one character.')
             return
-
-            prompt = f"Based on the provided name {name} , age {age} and Gender {gender}, smoking history {smoking_history} , Occupation {occupation} generate a brief profile summarizing key details that would be relevant for selecting a life insurance policy."
-            response = get_response(prompt)
-            st.text_area('Initial Profile', height=150, value=response, disabled=True)
-            #add_copy(response)
+        
+        prompt = f"Based on the provided name {name} , age {age} and Gender {gender}, smoking history {smoking_history} , Occupation {occupation} generate a brief profile summarizing key details that would be relevant for selecting a life insurance policy."
+        response = get_response(prompt)
+        st.text_area('Initial Profile', height=150, value=response, disabled=True)
+        #add_copy(response)
 
 client = setup_anthropic()
 create_ui()
