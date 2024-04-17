@@ -74,7 +74,7 @@ def create_ui():
                        value="", max_chars=100)
     occupation = st.text_area(f'What is your employment status?', height=50,
                        value="", max_chars=1000)
-    smoking_history = st.selectbox('Are you a smoker or a non-smoker?',('Smoker', 'Non - Smoker'))
+    smoking_history = st.selectbox('Are you a smoker or a non-smoker?',('','Smoker', 'Non - Smoker'))
 
     submitted = st.button('Submit', key=1)
 
@@ -88,19 +88,19 @@ def create_ui():
         st.text_area('Initial Profile', height=550, value=initial_profile, disabled=True)
         #add_copy(response)
 
-        insurance_type = st.selectbox('Select the type of insurance you would like to enquire about:', ('Life', 'Health', 'Automobile', 'Home'))
+        insurance_type = st.selectbox('Select the type of insurance you would like to enquire about:', ('','Life', 'Health', 'Automobile', 'Home'))
 
         #submitted2 = st.button('Submit', key=2)
-        #if submitted2:
-        prompt = f"Given the profile: {initial_profile} and the requested insurance type {insurance_type}, suggest 2-3 specific policy options of John Hancock that could be a good fit, along with a brief explanation for each recommendation. Give the names of the plans as well."
-        policy_recommendation = get_response(prompt)
-        st.text_area('Policy Recommendation', height=550, value=policy_recommendation, disabled=True)
-
-        quote_yes_no = st.selectbox('Do you want to see the approximate quotes for the above policies?', ('Yes', 'No'))
-        if quote_yes_no=='Yes':
-           prompt = f"Given the profile: {initial_profile} and the Policy Recommendation {policy_recommendation} , suggest a Quote for the recommended policies."
-           quote_recommendation = get_response(prompt)
-           st.text_area('Apptoximate Quotes', height=550, value=quote_recommendation, disabled=True)
+        if insurance_type=='Life':
+            prompt = f"Given the profile: {initial_profile} and the requested insurance type {insurance_type}, suggest 2-3 specific policy options of John Hancock that could be a good fit, along with a brief explanation for each recommendation. Give the names of the plans as well."
+            policy_recommendation = get_response(prompt)
+            st.text_area('Policy Recommendation', height=550, value=policy_recommendation, disabled=True)
+    
+            quote_yes_no = st.selectbox('Do you want to see the approximate quotes for the above policies?', ('','Yes', 'No'))
+            if quote_yes_no=='Yes':
+               prompt = f"Given the profile: {initial_profile} and the Policy Recommendation {policy_recommendation} , suggest a Quote for the recommended policies."
+               quote_recommendation = get_response(prompt)
+               st.text_area('Apptoximate Quotes', height=550, value=quote_recommendation, disabled=True)
 
             
 
