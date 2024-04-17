@@ -15,6 +15,7 @@ def get_response(prompt, model="claude-3-haiku-20240307"):
     response = client.messages.create(
         model=model,
         messages=messages,
+        max_tokens=500
         temperature=0
     )
     return response.content[0].text
