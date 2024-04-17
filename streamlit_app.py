@@ -76,7 +76,7 @@ def create_ui():
                        value="", max_chars=1000)
     smoking_history = st.selectbox('Are you a smoker or a non-smoker?',('Smoker', 'Non - Smoker'))
 
-    submitted = st.button('Submit')
+    submitted = st.button('Submit', key=1)
 
     if submitted:
         if len(name.strip()) == 0:
@@ -90,7 +90,7 @@ def create_ui():
 
         insurance_type = st.selectbox('Select the type of insurance you would like to enquire about:', ('Life', 'Health', 'Automobile', 'Home'))
 
-        submitted2 = st.button('Submit')
+        submitted2 = st.button('Submit', key=2)
         if submitted2:
             prompt = f"Given the profile: {initial_profile} and the requested insurance type {insurance_type}, suggest 2-3 specific policy options of John Hancock that could be a good fit, along with a brief explanation for each recommendation. Give the names of the plans as well."
             policy_recommendation = get_response(prompt)
