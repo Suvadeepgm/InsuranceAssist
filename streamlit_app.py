@@ -97,7 +97,7 @@ def create_ui():
             st.text_area('Policy Recommendation', height=550, value=policy_recommendation, disabled=True)
 
             quote_yes_no = st.selectbox('Do you want to see the approximate quotes for the above policies?', ('Yes', 'No'))
-            if quote_yes_no='Yes':
+            if quote_yes_no=='Yes':
                 prompt = f"Given the profile: {initial_profile} and the Policy Recommendation {policy_recommendation} , suggest a Quote for the recommended policies."
                 quote_recommendation = get_response(prompt)
                 st.text_area('Apptoximate Quotes', height=550, value=quote_recommendation, disabled=True)
