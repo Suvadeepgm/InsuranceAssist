@@ -21,11 +21,11 @@ def get_response(prompt, model="claude-3-haiku-20240307"):
 
 
 @st.experimental_fragment
-def add_copy(text):
-    copy_button = st.button("Copy to clipboard")
-    if copy_button:
-        pyperclip.copy(text)
-        st.toast("Copied to clipboard")
+#def add_copy(text):
+    #copy_button = st.button("Copy to clipboard")
+    #if copy_button:
+        #pyperclip.copy(text)
+        #st.toast("Copied to clipboard")
 
 
 def setup_sideBar():
@@ -34,7 +34,7 @@ def setup_sideBar():
         App is created using [OpenAI](https://openai.com) GPT api and 🎈[Streamlit](https://streamlit.io/).
         """)
     st.sidebar.markdown("""
-        Developed by [Rifat Monzur](https://www.linkedin.com/in/rifatmonzur/)
+        Developed by [Suvadeep Datta](https://www.linkedin.com/in/rifatmonzur/)
         """)
 
     st.sidebar.header("Resources")
@@ -53,7 +53,7 @@ def create_ui():
         layout = "wide" if st.session_state.widen else "centered"
 
     #######################################################
-    title = 'InsuranceAssist'
+    title = 'Insurance Assist'
     st.set_page_config(layout=layout, page_title=title, page_icon="🤗")
     st.title(title)
 
@@ -79,19 +79,14 @@ def create_ui():
     submitted = st.button('Submit')
 
     if submitted:
-        if len(txt.strip()) == 0:
+        if len(name.strip()) == 0:
             st.warning('Input needs to have at least one character.')
             return
-
-        if option == task_proofread:
-            if len(txt.strip()) == 0:
-                st.warning('Please input something to proofread and correct')
-                return
 
             prompt = f"Based on the provided name {name} , age {age} and Gender {gender}, smoking history {smoking_history} , Occupation {occupation} generate a brief profile summarizing key details that would be relevant for selecting a life insurance policy."
             response = get_response(prompt)
             st.text_area('Initial Profile', height=150, value=response, disabled=True)
             #add_copy(response)
 
-client = setup_openai()
+client = setup_anthropic()
 create_ui()
