@@ -20,7 +20,7 @@ def get_response(prompt, model="claude-3-haiku-20240307"):
     return response.content[0].text
 
 
-@st.experimental_fragment
+#st.experimental_fragment
 #def add_copy(text):
     #copy_button = st.button("Copy to clipboard")
     #if copy_button:
